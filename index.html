@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>RGMN | Przestrzeń</title>
+    <title>RGMN | Aktualności</title>
     <style>
         * {
             margin: 0;
@@ -19,17 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* ===== ANIMOWANE TŁO 3D/WAVE ===== */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: #000000;
-        }
-
+        /* ===== ANIMOWANE TŁO ===== */
         canvas#bgCanvas {
             position: fixed;
             top: 0;
@@ -47,7 +37,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.12;
+            opacity: 0.1;
             pointer-events: none;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             background-repeat: repeat;
@@ -64,34 +54,28 @@
             padding: 0 28px;
         }
 
-        /* ===== HERO Z ANIMACJĄ ===== */
+        /* ===== HERO ===== */
         .hero {
-            min-height: 85vh;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 80px 20px 50px;
-            animation: heroGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes heroGlow {
-            0% { text-shadow: 0 0 0px rgba(255,255,255,0); }
-            100% { text-shadow: 0 0 20px rgba(255,255,255,0.15); }
+            padding: 60px 20px 40px;
         }
 
         .logo {
-            font-size: 6rem;
+            font-size: 5.5rem;
             font-weight: 700;
-            letter-spacing: 0.25em;
-            background: linear-gradient(135deg, #ffffff, #9a9a9a, #ffffff);
+            letter-spacing: 0.2em;
+            background: linear-gradient(135deg, #ffffff, #9a9a9a);
             background-size: 200% auto;
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             margin-bottom: 20px;
-            animation: shimmer 5s linear infinite, floatLogo 4s ease-in-out infinite;
+            animation: shimmer 6s linear infinite, floatLogo 4s ease-in-out infinite;
         }
 
         @keyframes shimmer {
@@ -102,7 +86,7 @@
 
         @keyframes floatLogo {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-6px); }
         }
 
         .hero-line {
@@ -115,45 +99,38 @@
 
         @keyframes linePulse {
             0%, 100% { width: 80px; opacity: 0.5; }
-            50% { width: 140px; opacity: 1; }
+            50% { width: 130px; opacity: 1; }
         }
 
         .hero-sub {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            letter-spacing: 3px;
+            font-size: 1rem;
+            color: #a0a0a0;
+            letter-spacing: 2px;
             font-weight: 300;
-            animation: fadeInUp 1s ease-out;
         }
 
-        /* ===== NAVIGACJA Z GLASS ===== */
+        /* ===== NAVIGACJA ===== */
         .nav-bar {
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 2.5rem;
             flex-wrap: wrap;
-            margin: 20px 0 60px;
-            padding: 14px 36px;
+            margin: 20px 0 50px;
+            padding: 14px 32px;
             background: rgba(8,8,8,0.55);
             backdrop-filter: blur(16px);
             border-radius: 100px;
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.1);
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            animation: slideDown 0.8s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-40px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .nav-link {
-            color: #ddd;
+            color: #ccc;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             padding: 8px 6px;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: all 0.3s;
             position: relative;
         }
 
@@ -167,7 +144,6 @@
             background: #fff;
             transition: all 0.3s ease;
             transform: translateX(-50%);
-            box-shadow: 0 0 8px rgba(255,255,255,0.6);
         }
 
         .nav-link:hover::before {
@@ -176,113 +152,158 @@
 
         .nav-link:hover {
             color: white;
-            transform: translateY(-2px);
         }
 
-        /* ===== KARTY Z ANIMACJAMI ===== */
+        /* ===== KARTY ===== */
         .cards-grid {
             display: flex;
             flex-direction: column;
-            gap: 48px;
-            margin: 30px 0 80px;
+            gap: 40px;
+            margin: 30px 0 60px;
         }
 
         .card {
             background: rgba(12,12,12,0.65);
             backdrop-filter: blur(14px);
-            border-radius: 48px;
-            padding: 42px 44px;
+            border-radius: 44px;
+            padding: 38px 42px;
             border: 1px solid rgba(255,255,255,0.06);
-            transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             opacity: 0;
-            transform: translateY(40px) scale(0.98);
+            transform: translateY(35px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         .card.visible {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
 
         .card:hover {
-            border-color: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.2);
             background: rgba(20,20,20,0.8);
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 30px 50px -15px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
+            transform: translateY(-4px);
         }
 
         .card h2 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 500;
             margin-bottom: 20px;
-            letter-spacing: -0.3px;
             background: linear-gradient(135deg, #fff, #c0c0c0);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            display: inline-block;
-            animation: titleGlow 3s infinite alternate;
-        }
-
-        @keyframes titleGlow {
-            0% { filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
-            100% { filter: drop-shadow(0 0 4px rgba(255,255,255,0.3)); }
         }
 
         .card p {
-            color: #c0c0c0;
-            font-size: 1.05rem;
-            margin-bottom: 32px;
+            color: #bcbcbc;
+            font-size: 1rem;
+            margin-bottom: 28px;
             line-height: 1.6;
         }
 
-        /* ===== PRZYCISKI Z ANIMACJĄ ===== */
+        /* ===== SEKCJA AKTUALNOŚCI - SPECJALNA ===== */
+        .news-section {
+            margin: 20px 0 40px;
+        }
+
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            gap: 15px;
+        }
+
+        .news-header h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            background: linear-gradient(135deg, #fff, #c0c0c0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .news-badge {
+            font-size: 0.7rem;
+            color: #6a6a6a;
+            letter-spacing: 1px;
+        }
+
+        /* === LISTA AKTUALNOŚCI === */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .news-item {
+            background: rgba(20,20,20,0.5);
+            border-left: 3px solid #6a6a6a;
+            padding: 18px 22px;
+            border-radius: 20px;
+            transition: all 0.25s;
+            backdrop-filter: blur(4px);
+        }
+
+        .news-item:hover {
+            background: rgba(30,30,30,0.6);
+            border-left-color: #aaaaaa;
+            transform: translateX(4px);
+        }
+
+        .news-date {
+            font-size: 0.7rem;
+            color: #888;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .news-text {
+            font-size: 1rem;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+
+        .empty-news {
+            text-align: center;
+            padding: 40px;
+            color: #5a5a5a;
+            font-style: italic;
+            background: rgba(15,15,15,0.4);
+            border-radius: 32px;
+        }
+
+        /* ===== PRZYCISKI ===== */
         .button-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 18px;
             margin-top: 15px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 32px;
+            gap: 8px;
+            padding: 10px 28px;
             background: #1a1a1a;
             border: 1px solid #3e3e3e;
             border-radius: 50px;
-            color: #f0f0f0;
+            color: #efefef;
             font-weight: 500;
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.35s ease;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
             cursor: pointer;
-            backdrop-filter: blur(4px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn:hover::after {
-            left: 100%;
         }
 
         .btn:hover {
             background: #2c2c2c;
             border-color: #7a7a7a;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.5), 0 0 15px rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .btn-outline {
@@ -291,11 +312,11 @@
         }
 
         .btn-outline:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: #bbbbbb;
+            background: rgba(255,255,255,0.06);
+            border-color: #aaa;
         }
 
-        /* ===== MODAL Z FORMULARZEM ===== */
+        /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -305,34 +326,22 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
-            animation: fadeInModal 0.25s ease;
-        }
-
-        @keyframes fadeInModal {
-            from { opacity: 0; backdrop-filter: blur(0px); }
-            to { opacity: 1; backdrop-filter: blur(12px); }
         }
 
         .modal-content {
             background: #0c0c0c;
             border: 1px solid #2e2e2e;
-            border-radius: 48px;
+            border-radius: 44px;
             max-width: 480px;
             width: 90%;
-            padding: 38px 32px;
-            box-shadow: 0 40px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
-            transform: scale(0.95);
-            animation: modalPop 0.25s ease forwards;
-        }
-
-        @keyframes modalPop {
-            to { transform: scale(1); }
+            padding: 36px 32px;
+            box-shadow: 0 40px 60px rgba(0,0,0,0.5);
         }
 
         .modal-content h3 {
             color: white;
             margin-bottom: 24px;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 500;
         }
 
@@ -347,14 +356,12 @@
             font-family: inherit;
             font-size: 0.95rem;
             margin-bottom: 18px;
-            transition: all 0.2s;
         }
 
         .modal-content input:focus,
         .modal-content textarea:focus {
             outline: none;
             border-color: #7a7a7a;
-            box-shadow: 0 0 12px rgba(255,255,255,0.1);
         }
 
         .modal-buttons {
@@ -369,7 +376,6 @@
             border-radius: 40px;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.2s;
             font-size: 0.9rem;
         }
 
@@ -380,8 +386,7 @@
         }
 
         .btn-send:hover {
-            background: #3c3c3c;
-            transform: scale(1.02);
+            background: #3a3a3a;
         }
 
         .btn-close {
@@ -390,47 +395,40 @@
             color: #ccc;
         }
 
-        .btn-close:hover {
-            background: rgba(255,255,255,0.05);
-        }
-
         /* ===== STOPKA ===== */
         .footer {
             margin-top: 60px;
             padding: 48px 24px 40px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.05);
-            background: rgba(3,3,3,0.6);
+            background: rgba(3,3,3,0.5);
             backdrop-filter: blur(12px);
             border-radius: 60px 60px 0 0;
         }
 
         .footer p {
             color: #6a6a6a;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
+            font-size: 0.75rem;
         }
 
         /* ===== TOAST ===== */
         .toast-message {
             position: fixed;
-            bottom: 35px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%) scale(0.9);
             background: #141414;
-            backdrop-filter: blur(24px);
+            backdrop-filter: blur(20px);
             border: 1px solid #4a4a4a;
-            color: #f5f5f5;
-            padding: 12px 32px;
+            color: #f0f0f0;
+            padding: 12px 28px;
             border-radius: 60px;
             font-size: 0.85rem;
             z-index: 1100;
             opacity: 0;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             pointer-events: none;
-            font-weight: 500;
             white-space: nowrap;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
 
         .toast-message.show {
@@ -438,25 +436,19 @@
             transform: translateX(-50%) scale(1);
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         @media (max-width: 700px) {
             .container { padding: 0 20px; }
             .logo { font-size: 3rem; letter-spacing: 0.12em; }
-            .card { padding: 28px 24px; }
-            .card h2 { font-size: 1.7rem; }
-            .nav-bar { gap: 1.5rem; padding: 10px 20px; }
-            .btn { padding: 9px 20px; }
+            .card { padding: 28px 22px; }
+            .card h2 { font-size: 1.6rem; }
+            .nav-bar { gap: 1.2rem; padding: 10px 20px; }
+            .news-item { padding: 14px 18px; }
             .toast-message { white-space: normal; text-align: center; max-width: 85%; }
         }
     </style>
 </head>
 <body>
 
-<div class="animated-bg"></div>
 <canvas id="bgCanvas"></canvas>
 <div class="noise-overlay"></div>
 
@@ -469,22 +461,41 @@
 
     <div class="nav-bar">
         <a href="#" class="nav-link" data-nav="about">○ kim jesteśmy</a>
+        <a href="#" class="nav-link" data-nav="news">○ aktualności</a>
         <a href="#" class="nav-link" data-nav="social">○ social media</a>
         <a href="#" class="nav-link" data-nav="contact">○ kontakt</a>
     </div>
 
     <div class="cards-grid">
+        <!-- Sekcja: O nas -->
         <div class="card" id="about-card">
             <h2>kim jesteśmy</h2>
-            <p>Jesteśmy grupą ludzi. Bez zbędnych opisów, bez designerskich haseł. Po prostu istniejemy, robimy swoje i czasem gdzieś w internecie się pojawiamy. Bez filtra, bez pozowania.</p>
+            <p>Jesteśmy grupą ludzi. Bez zbędnych opisów, bez designerskich haseł. Po prostu istniejemy, robimy swoje i czasem gdzieś w internecie się pojawiamy.</p>
             <div class="button-group">
                 <button class="btn" id="moreInfoBtn">✦ więcej</button>
             </div>
         </div>
 
+        <!-- ========== SEKCJA AKTUALNOŚCI – TUTAJ WPISUJESZ NOWOŚCI ========== -->
+        <!-- 
+            ⬇️⬇️⬇️ WPISUJ NOWE AKTUALNOŚCI W TABLICY "newsData" PONIŻEJ ⬇️⬇️⬇️
+            Każdy wpis to obiekt: { date: "DD.MM.YYYY", text: "treść aktualności" }
+            Możesz dodawać tyle wpisów ile chcesz. Najnowsze wyświetlą się na górze.
+        -->
+        <div class="card" id="news-card">
+            <div class="news-header">
+                <h2>aktualności</h2>
+                <span class="news-badge">#rgmn</span>
+            </div>
+            <div id="newsListContainer" class="news-list">
+                <!-- Lista aktualności będzie generowana dynamicznie z JS -->
+            </div>
+        </div>
+
+        <!-- Sekcja: Social Media -->
         <div class="card" id="social-card">
             <h2>social media</h2>
-            <p>Tu nas znajdziesz. Bez fikołków, zwyczajnie.</p>
+            <p>Tu nas znajdziesz.</p>
             <div class="button-group">
                 <a href="https://tiktok.com/@4rgmn" class="btn" target="_blank" data-social="tiktok">◢ TikTok</a>
                 <a href="https://www.instagram.com/rgmn.of" class="btn" target="_blank" data-social="instagram">◣ Instagram</a>
@@ -492,6 +503,7 @@
             </div>
         </div>
 
+        <!-- Sekcja: Kontakt -->
         <div class="card" id="contact-card">
             <h2>kontakt</h2>
             <p>Napisz do nas. Odpowiemy jak najszybciej.</p>
@@ -499,7 +511,7 @@
                 <button class="btn btn-outline" id="copyEmailBtn">✉ kopiuj email</button>
                 <button class="btn btn-outline" id="openContactModal">✎ napisz wiadomość</button>
             </div>
-            <div style="margin-top: 22px; font-size: 0.8rem; color:#6a6a6a;">romgab408@gmail.com</div>
+            <div style="margin-top: 20px; font-size: 0.8rem; color:#6a6a6a;">romgab408@gmail.com</div>
         </div>
     </div>
 
@@ -508,11 +520,11 @@
     </footer>
 </div>
 
-<!-- Modal z prawdziwym wysyłaniem -->
+<!-- Modal do wysyłania wiadomości -->
 <div id="contactModal" class="modal-overlay">
     <div class="modal-content">
         <h3>napisz do nas</h3>
-        <input type="text" id="senderName" placeholder="imię lub nick" autocomplete="off">
+        <input type="text" id="senderName" placeholder="imię lub nick">
         <input type="email" id="senderEmail" placeholder="twój email (opcjonalnie)">
         <textarea id="messageContent" rows="4" placeholder="twoja wiadomość..."></textarea>
         <div class="modal-buttons">
@@ -523,278 +535,262 @@
 </div>
 
 <script>
-    (function() {
-        // ==================== ANIMOWANE TŁO (FALA + CZĄSTECZKI) ====================
-        const canvas = document.getElementById('bgCanvas');
-        let ctx = canvas.getContext('2d');
-        let width, height;
-        let time = 0;
-        let particles = [];
+    // ==================== 📝 TUTAJ WPISUJESZ AKTUALNOŚCI ====================
+    // Dodawaj nowe wpisy w tablicy poniżej. Każdy wpis to { date: "data", text: "treść" }
+    // Data w formacie np. "24.03.2025" lub "dzisiaj", "wczoraj" – dowolnie.
+    // Nowe wpisy dodawaj na POCZĄTKU listy, żeby były wyświetlane jako pierwsze.
+    
+    const newsData = [
+        { date: "24.03.2025", text: "Jesteśmy! Strona właśnie wystartowała. Witamy wszystkich." },
+        { date: "23.03.2025", text: "Pracujemy nad nowymi materiałami. Wkrótce więcej." },
+        { date: "20.03.2025", text: "Pierwsze spotkanie ekipy – planujemy działania." },
+        { date: "15.03.2025", text: "Ruszyliśmy z profilem na TikToku. Dołączajcie!" },
+        // ➕ DODAWAJ NOWE WPISY PONIŻEJ LUB POWYŻEJ – WAŻNE: NAJNOWSZE NA GÓRĘ
+        // Przykład:
+        // { date: "25.03.2025", text: "Nowy projekt w drodze! Szczegóły wkrótce." },
+    ];
+    
+    // ==================== KONIEC SEKCJI DO EDYCJI ====================
 
-        function resizeCanvas() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-            initParticlesBg();
+    // Funkcja renderująca aktualności
+    function renderNews() {
+        const container = document.getElementById('newsListContainer');
+        if (!container) return;
+        
+        if (!newsData || newsData.length === 0) {
+            container.innerHTML = '<div class="empty-news">✧ brak aktualności ✧<br><span style="font-size:0.75rem;">dodaj wpisy w tablicy newsData w pliku index.html</span></div>';
+            return;
         }
-
-        function initParticlesBg() {
-            particles = [];
-            const count = Math.min(120, Math.floor(width * height / 8000));
-            for (let i = 0; i < count; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    radius: Math.random() * 1.8 + 0.5,
-                    alpha: Math.random() * 0.4 + 0.1,
-                    vx: (Math.random() - 0.5) * 0.25,
-                    vy: (Math.random() - 0.5) * 0.2,
-                });
-            }
-        }
-
-        function drawBackground() {
-            if (!ctx) return;
-            ctx.clearRect(0, 0, width, height);
-            
-            // Gradient radialny w tle
-            const grad = ctx.createRadialGradient(width/2, height/2, 50, width/2, height/2, Math.max(width, height)/1.5);
-            grad.addColorStop(0, '#050505');
-            grad.addColorStop(0.6, '#0a0a0a');
-            grad.addColorStop(1, '#020202');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, width, height);
-            
-            // Fale / linie sinusoidalne
-            ctx.save();
-            ctx.globalAlpha = 0.35;
-            for (let i = 0; i < 4; i++) {
-                ctx.beginPath();
-                const offsetY = height * 0.3 + i * 70;
-                const amplitude = 25 + i * 8;
-                const frequency = 0.003 + i * 0.0008;
-                for (let x = 0; x < width; x += 8) {
-                    const y = offsetY + Math.sin(x * frequency + time * 0.0015 + i) * amplitude;
-                    if (x === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
-                }
-                ctx.strokeStyle = `rgba(180, 180, 200, ${0.12 - i * 0.02})`;
-                ctx.lineWidth = 1.2;
-                ctx.stroke();
-            }
-            
-            // Dodatkowe fale poziome
-            for (let i = 0; i < 3; i++) {
-                ctx.beginPath();
-                const offsetY = height * 0.65 + i * 55;
-                const amplitude = 18 + i * 5;
-                for (let x = 0; x < width; x += 8) {
-                    const y = offsetY + Math.cos(x * 0.004 + time * 0.0012 + i * 1.2) * amplitude;
-                    if (x === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
-                }
-                ctx.strokeStyle = `rgba(140, 140, 170, 0.1)`;
-                ctx.lineWidth = 1;
-                ctx.stroke();
-            }
-            
-            // Rysowanie cząsteczek (gwiazdki)
-            for (let p of particles) {
-                ctx.globalAlpha = p.alpha * 0.7;
-                ctx.fillStyle = '#ffffff';
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fill();
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < -10) p.x = width + 10;
-                if (p.x > width + 10) p.x = -10;
-                if (p.y < -10) p.y = height + 10;
-                if (p.y > height + 10) p.y = -10;
-            }
-            ctx.restore();
-            
-            // Delikatny blask
-            ctx.save();
-            ctx.globalCompositeOperation = 'lighter';
-            ctx.globalAlpha = 0.08;
-            for (let i = 0; i < 12; i++) {
-                ctx.beginPath();
-                ctx.arc(width * 0.3 + Math.sin(time * 0.0005 + i) * 50, height * 0.5 + Math.cos(time * 0.0007 + i) * 40, 120, 0, Math.PI * 2);
-                ctx.fillStyle = '#aaaaaa';
-                ctx.fill();
-            }
-            ctx.restore();
-            
-            time += 1;
-            requestAnimationFrame(drawBackground);
-        }
-
-        window.addEventListener('resize', () => {
-            resizeCanvas();
+        
+        // Sortujemy od najnowszej do najstarszej (zakładając format daty DD.MM.YYYY lub dowolny string)
+        // Proste sortowanie: jeśli data ma kropki, próbujemy porównać, ale dla czytelności zostawiamy kolejność z tablicy
+        // ale dla wygody – odwracamy, żeby to co na górze tablicy było pierwsze (bo użytkownik będzie dodawał na początek)
+        // Używamy kolejności z tablicy – zakładamy, że najnowsze są na początku listy newsData.
+        const newsToShow = [...newsData];
+        
+        container.innerHTML = '';
+        newsToShow.forEach(item => {
+            const newsDiv = document.createElement('div');
+            newsDiv.className = 'news-item';
+            newsDiv.innerHTML = `
+                <div class="news-date">${escapeHtml(item.date)}</div>
+                <div class="news-text">${escapeHtml(item.text)}</div>
+            `;
+            container.appendChild(newsDiv);
         });
+    }
+    
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
+    }
+    
+    // ========== ANIMOWANE TŁO (FALE + CZĄSTECZKI) ==========
+    const canvas = document.getElementById('bgCanvas');
+    let ctx = canvas.getContext('2d');
+    let width, height;
+    let time = 0;
+    let particlesBg = [];
+    
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        initParticles();
+    }
+    
+    function initParticles() {
+        particlesBg = [];
+        const count = Math.min(100, Math.floor(width * height / 9000));
+        for (let i = 0; i < count; i++) {
+            particlesBg.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 1.6 + 0.4,
+                alpha: Math.random() * 0.35 + 0.1,
+                vx: (Math.random() - 0.5) * 0.2,
+                vy: (Math.random() - 0.5) * 0.15,
+            });
+        }
+    }
+    
+    function drawBackground() {
+        if (!ctx) return;
+        ctx.clearRect(0, 0, width, height);
+        
+        // Gradient
+        const grad = ctx.createRadialGradient(width/2, height/2, 30, width/2, height/2, Math.max(width, height)/1.4);
+        grad.addColorStop(0, '#070707');
+        grad.addColorStop(0.7, '#0c0c0c');
+        grad.addColorStop(1, '#010101');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Fale
+        ctx.save();
+        ctx.globalAlpha = 0.3;
+        for (let i = 0; i < 4; i++) {
+            ctx.beginPath();
+            const offsetY = height * 0.3 + i * 65;
+            const amplitude = 20 + i * 6;
+            for (let x = 0; x < width; x += 10) {
+                const y = offsetY + Math.sin(x * 0.004 + time * 0.002 + i) * amplitude;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.strokeStyle = `rgba(170, 170, 200, 0.1)`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+        
+        // Cząsteczki
+        for (let p of particlesBg) {
+            ctx.globalAlpha = p.alpha;
+            ctx.fillStyle = '#ddd';
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fill();
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < -20) p.x = width + 20;
+            if (p.x > width + 20) p.x = -20;
+            if (p.y < -20) p.y = height + 20;
+            if (p.y > height + 20) p.y = -20;
+        }
+        ctx.restore();
+        
+        time += 1;
+        requestAnimationFrame(drawBackground);
+    }
+    
+    window.addEventListener('resize', () => {
         resizeCanvas();
-        drawBackground();
-
-        // ========== ANIMACJA KART PRZY SCROLL ==========
-        const cards = document.querySelectorAll('.card');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.2 });
-        cards.forEach(card => observer.observe(card));
-        setTimeout(() => {
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) card.classList.add('visible');
-            });
-        }, 200);
-
-        // ========== PŁYNNE PRZEWIJANIE ==========
-        const navLinks = document.querySelectorAll('[data-nav]');
-        const sectionsMap = { about: 'about-card', social: 'social-card', contact: 'contact-card' };
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetKey = link.getAttribute('data-nav');
-                const targetId = sectionsMap[targetKey];
-                if (targetId) {
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        targetElement.style.transition = 'box-shadow 0.2s';
-                        targetElement.style.boxShadow = '0 0 0 2px rgba(255,255,255,0.3)';
-                        setTimeout(() => { targetElement.style.boxShadow = ''; }, 700);
-                    }
-                }
-            });
+    });
+    resizeCanvas();
+    drawBackground();
+    
+    // ========== INTERAKCJE ==========
+    function showToast(message, duration = 2500) {
+        let toast = document.querySelector('.toast-message');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast-message';
+            document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), duration);
+    }
+    
+    // Obserwator kart
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
-
-        // ========== TOAST ==========
-        function showToast(message, duration = 2800) {
-            let toast = document.querySelector('.toast-message');
-            if (!toast) {
-                toast = document.createElement('div');
-                toast.className = 'toast-message';
-                document.body.appendChild(toast);
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+    setTimeout(() => {
+        cards.forEach(card => {
+            if (card.getBoundingClientRect().top < window.innerHeight - 80) card.classList.add('visible');
+        });
+    }, 150);
+    
+    // Nawigacja
+    const navLinks = document.querySelectorAll('[data-nav]');
+    const sections = {
+        about: 'about-card',
+        news: 'news-card',
+        social: 'social-card',
+        contact: 'contact-card'
+    };
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const key = link.getAttribute('data-nav');
+            const targetId = sections[key];
+            if (targetId) {
+                const el = document.getElementById(targetId);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    el.style.boxShadow = '0 0 0 2px rgba(255,255,255,0.2)';
+                    setTimeout(() => el.style.boxShadow = '', 600);
+                }
             }
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), duration);
-        }
-
-        // ========== WIĘCEJ INFORMACJI ==========
-        document.getElementById('moreInfoBtn')?.addEventListener('click', () => {
-            showToast('Jesteśmy. Bez napinki. 🤍');
         });
-
-        // ========== KOPIOWANIE EMAIL ==========
-        const copyBtn = document.getElementById('copyEmailBtn');
-        if (copyBtn) {
-            copyBtn.addEventListener('click', async () => {
-                try {
-                    await navigator.clipboard.writeText('romgab408@gmail.com');
-                    showToast('✉ email skopiowany');
-                } catch { showToast('nie udało się'); }
-            });
-        }
-
-        // ========== MODAL Z PRAWDZIWYM WYSYŁANIEM (FormSubmit) ==========
-        const modal = document.getElementById('contactModal');
-        const openModalBtn = document.getElementById('openContactModal');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const sendEmailBtn = document.getElementById('sendRealEmailBtn');
-        const nameInput = document.getElementById('senderName');
-        const emailInput = document.getElementById('senderEmail');
-        const msgInput = document.getElementById('messageContent');
-
-        function openModal() { if (modal) modal.style.display = 'flex'; }
-        function closeModal() { 
-            if (modal) modal.style.display = 'none';
-            if (nameInput) nameInput.value = '';
-            if (emailInput) emailInput.value = '';
-            if (msgInput) msgInput.value = '';
-        }
-
-        if (openModalBtn) openModalBtn.addEventListener('click', openModal);
-        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-        if (modal) {
-            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-        }
-
-        if (sendEmailBtn) {
-            sendEmailBtn.addEventListener('click', async () => {
-                const name = nameInput?.value.trim() || 'Anonim';
-                const userEmail = emailInput?.value.trim() || '';
-                const message = msgInput?.value.trim();
-                
-                if (!message) {
-                    showToast('✎ napisz coś w wiadomości');
-                    return;
-                }
-                
-                const originalText = sendEmailBtn.innerText;
-                sendEmailBtn.innerText = 'wysyłanie...';
-                sendEmailBtn.disabled = true;
-                
-                // Użycie FormSubmit.co – darmowy endpoint, który przekazuje email na romgab408@gmail.com
-                const submitUrl = 'https://formsubmit.co/ajax/romgab408@gmail.com';
-                const payload = {
-                    name: name,
-                    email: userEmail || 'brak adresu',
-                    message: message,
-                    _subject: `Nowa wiadomość od ${name} (RGMN)`,
-                    _captcha: 'false'
-                };
-                
-                try {
-                    const response = await fetch(submitUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    const result = await response.json();
-                    if (response.ok && result.success !== false) {
-                        showToast('✓ wiadomość wysłana! Odpiszemy wkrótce.');
-                        closeModal();
-                    } else {
-                        showToast('❌ nie udało się wysłać, spróbuj ponownie');
-                    }
-                } catch (error) {
-                    console.error(error);
-                    showToast('❌ błąd połączenia, sprawdź internet');
-                } finally {
-                    sendEmailBtn.innerText = originalText;
-                    sendEmailBtn.disabled = false;
-                }
-            });
-        }
-
-        // ========== TOASTY SOCIAL ==========
-        document.querySelectorAll('[data-social]').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const platform = btn.getAttribute('data-social');
-                showToast(`➜ przejście do ${platform}`);
-            });
+    });
+    
+    // Więcej info
+    document.getElementById('moreInfoBtn')?.addEventListener('click', () => {
+        showToast('Jesteśmy. Bez udawania. 🤍');
+    });
+    
+    // Kopiowanie email
+    document.getElementById('copyEmailBtn')?.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText('romgab408@gmail.com');
+            showToast('✉ email skopiowany');
+        } catch { showToast('nie udało się'); }
+    });
+    
+    // Modal kontaktowy z wysyłaniem
+    const modal = document.getElementById('contactModal');
+    const openBtn = document.getElementById('openContactModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const sendBtn = document.getElementById('sendRealEmailBtn');
+    const nameInp = document.getElementById('senderName');
+    const emailInp = document.getElementById('senderEmail');
+    const msgInp = document.getElementById('messageContent');
+    
+    function openModal() { if (modal) modal.style.display = 'flex'; }
+    function closeModalFn() { if (modal) modal.style.display = 'none'; }
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModalFn);
+    if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModalFn(); });
+    
+    if (sendBtn) {
+        sendBtn.addEventListener('click', async () => {
+            const name = nameInp?.value.trim() || 'Anonim';
+            const userEmail = emailInp?.value.trim() || '';
+            const message = msgInp?.value.trim();
+            if (!message) { showToast('✎ napisz coś'); return; }
+            sendBtn.innerText = 'wysyłanie...';
+            sendBtn.disabled = true;
+            try {
+                const res = await fetch('https://formsubmit.co/ajax/romgab408@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ name, email: userEmail || 'brak', message, _subject: `RGMN: ${name}` })
+                });
+                if (res.ok) { showToast('✓ wiadomość wysłana!'); closeModalFn(); if (msgInp) msgInp.value = ''; if (nameInp) nameInp.value = ''; if (emailInp) emailInp.value = ''; }
+                else showToast('❌ błąd, spróbuj ponownie');
+            } catch { showToast('❌ błąd połączenia'); }
+            finally { sendBtn.innerText = 'wyślij'; sendBtn.disabled = false; }
         });
-
-        // Efekt hero-line
-        const heroLine = document.querySelector('.hero-line');
-        if (heroLine) {
-            heroLine.addEventListener('mouseenter', () => {
-                heroLine.style.boxShadow = '0 0 20px rgba(255,255,255,0.5)';
-                heroLine.style.background = 'linear-gradient(90deg, transparent, #fff, transparent)';
-            });
-            heroLine.addEventListener('mouseleave', () => {
-                heroLine.style.boxShadow = '0 0 8px rgba(200,200,220,0.3)';
-                heroLine.style.background = 'linear-gradient(90deg, transparent, #aaa, #fff, #aaa, transparent)';
-            });
-        }
-    })();
+    }
+    
+    // Social toasty
+    document.querySelectorAll('[data-social]').forEach(btn => {
+        btn.addEventListener('click', () => showToast(`➜ przejście do ${btn.getAttribute('data-social')}`));
+    });
+    
+    // Renderowanie aktualności przy starcie
+    renderNews();
+    
+    // Efekt hero-line
+    const hl = document.querySelector('.hero-line');
+    if (hl) {
+        hl.addEventListener('mouseenter', () => hl.style.boxShadow = '0 0 15px rgba(255,255,255,0.5)');
+        hl.addEventListener('mouseleave', () => hl.style.boxShadow = 'none');
+    }
 </script>
 </body>
 </html>
